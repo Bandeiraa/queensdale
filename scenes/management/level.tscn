@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7j25qkhm2wrv"]
+
+[ext_resource type="PackedScene" uid="uid://bsss4n81i3btn" path="res://scenes/character/queen.tscn" id="1_5w8qw"]
+[ext_resource type="TileSet" uid="uid://70n07b2g1vns" path="res://resources/base_terrain.tres" id="2_3kpgg"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="BaseTerrain" type="TileMap" parent="Terrain"]
+tile_set = ExtResource("2_3kpgg")
+format = 2
+layer_0/tile_data = PackedInt32Array(458759, 131073, 2, 393223, 131073, 1, 327687, 131073, 0, 458758, 65537, 2, 393222, 65537, 1, 458757, 65537, 2, 393221, 65537, 1, 458756, 65537, 2, 393220, 65537, 1, 327684, 65537, 0, 458755, 65537, 2, 393219, 65537, 1, 458754, 65537, 2, 393218, 65537, 1, 327682, 65537, 0, 458753, 1, 2, 393217, 1, 1, 327681, 1, 0, 327683, 65537, 0, 327685, 65537, 0, 327686, 65537, 0)
+
+[node name="Queen" parent="." instance=ExtResource("1_5w8qw")]
+position = Vector2(171, 132)

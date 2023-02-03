@@ -4,7 +4,9 @@ class_name CharacterQueen
 @onready var texture: Sprite2D = get_node("Texture")
 
 var jump_count: int = 0
+
 var on_jump: bool = false
+var is_attacking: bool = false
 
 @export var jump_speed: float = -256.0
 
@@ -15,6 +17,7 @@ var on_jump: bool = false
 func _physics_process(delta: float) -> void:
 	move_handler()
 	jump_handler()
+	attack_handler()
 	
 	move_and_slide()
 	
@@ -28,7 +31,7 @@ func move_handler() -> void:
 	
 	
 func get_direction() -> float:
-	return Input.get_axis("ui_left", "ui_right")
+	return Input.get_axis("move_left", "move_right")
 	
 	
 func jump_handler() -> void:
@@ -37,8 +40,26 @@ func jump_handler() -> void:
 		texture.action("jump_end")
 		set_physics_process(false)
 		
-	if Input.is_action_just_pressed("ui_select") and jump_count < 2:
+	if Input.is_action_just_pressed("jump") and jump_count < 2:
 		texture.action("jump_start")
+		set_physics_process(false)
+		
+		
+func attack_handler() -> void:
+	if (
+		is_attacking or 
+		not is_on_floor()
+	):
+		return
+		
+	if Input.is_action_just_pressed("attack_1"):
+		is_attacking = true
+		texture.action("attack_1")
+		set_physics_process(false)
+		
+	if Input.is_action_just_pressed("attack_2"):
+		is_attacking = true
+		texture.action("attack_2")
 		set_physics_process(false)
 		
 		

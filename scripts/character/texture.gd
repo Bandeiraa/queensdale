@@ -1,6 +1,7 @@
 extends Sprite2D
 class_name CharacterTexture
 
+var on_jump: bool = false
 var on_action: bool = false
 
 @export var animation: AnimationPlayer = null
@@ -10,6 +11,15 @@ func animate(velocity: Vector2) -> void:
 	set_direction(velocity.x)
 	
 	if on_action:
+		return
+		
+	if velocity.y != 0:
+		vertical_behavior()
+		return
+		
+	if velocity.y == 0 and on_jump:
+		animation.play("jump_end")
+		character.set_physics_process(false)
 		return
 		
 	horizontal_behavior(velocity.x)
@@ -28,8 +38,17 @@ func action(anim: String) -> void:
 	animation.play(anim)
 	
 	
-func horizontal_behavior(x_vel: float) -> void:
-	if x_vel != 0:
+func vertical_behavior() -> void:
+	if animation.current_animation == "":
+		return
+		
+	if animation.current_animation != "jump":
+		animation.play("jump")
+		on_jump = true
+		
+		
+func horizontal_behavior(vel: float) -> void:
+	if vel != 0:
 		animation.play("run")
 		return
 		
@@ -60,5 +79,11 @@ func on_animation_finished(anim_name) -> void:
 		animation.play("jump")
 		
 	if anim_name == "jump_end":
+		on_jump = false
 		on_action = false
+		character.set_physics_process(true)
+		
+	if anim_name == "attack_1" or anim_name == "attack_2":
+		on_action = false
+		character.is_attacking = false
 		character.set_physics_process(true)

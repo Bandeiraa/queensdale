@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://hhgmbr42k83y"]
+
+[ext_resource type="Texture2D" uid="uid://b0pugrtp884ab" path="res://assets/background/Background.png" id="1_c0lk4"]
+[ext_resource type="Texture2D" uid="uid://btwradfux13e1" path="res://assets/background/background_tree_no_fog.png" id="2_7umui"]
+[ext_resource type="Texture2D" uid="uid://ctnk8g7cxoq2n" path="res://assets/background/mountain_no_fog.png" id="2_rcmpg"]
+[ext_resource type="Texture2D" uid="uid://l2frh18o8cdy" path="res://assets/background/background_tree_with_fog.png" id="3_22doe"]
+[ext_resource type="Texture2D" uid="uid://c8x0w7ojdsbfl" path="res://assets/background/mountain_with_fog.png" id="3_yckxc"]
+
+[node name="Background" type="ParallaxBackground"]
+
+[node name="Bg" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.01, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Texture" type="TextureRect" parent="Bg"]
+offset_right = 480.0
+offset_bottom = 272.0
+texture = ExtResource("1_c0lk4")
+
+[node name="MountainWithFog" type="ParallaxLayer" parent="."]
+position = Vector2(-67, 0)
+motion_scale = Vector2(0.02, 0)
+motion_mirroring = Vector2(768, 0)
+
+[node name="Texture" type="TextureRect" parent="MountainWithFog"]
+offset_top = 23.0
+offset_right = 768.0
+offset_bottom = 279.0
+texture = ExtResource("3_yckxc")
+
+[node name="MountainNoFog" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.03, 0)
+motion_mirroring = Vector2(768, 0)
+
+[node name="Texture" type="TextureRect" parent="MountainNoFog"]
+offset_top = 48.0
+offset_right = 768.0
+offset_bottom = 304.0
+texture = ExtResource("2_rcmpg")
+
+[node name="TreeWithFog1" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.05, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Texture" type="TextureRect" parent="TreeWithFog1"]
+offset_top = 78.0
+offset_right = 320.0
+offset_bottom = 334.0
+texture = ExtResource("3_22doe")
+
+[node name="TreeWithFog2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.05, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Texture" type="TextureRect" parent="TreeWithFog2"]
+offset_left = 160.0
+offset_top = 78.0
+offset_right = 480.0
+offset_bottom = 334.0
+texture = ExtResource("3_22doe")
+
+[node name="TreeWithFog3" type="ParallaxLayer" parent="."]
+position = Vector2(-298, 0)
+motion_scale = Vector2(0.05, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Texture" type="TextureRect" parent="TreeWithFog3"]
+offset_left = 155.0
+offset_top = 78.0
+offset_right = 475.0
+offset_bottom = 334.0
+texture = ExtResource("3_22doe")
+
+[node name="TreeNoFog1" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.07, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Texture" type="TextureRect" parent="TreeNoFog1"]
+offset_left = 154.0
+offset_top = 104.0
+offset_right = 474.0
+offset_bottom = 360.0
+texture = ExtResource("2_7umui")
+
+[node name="TreeNoFog2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.07, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Texture" type="TextureRect" parent="TreeNoFog2"]
+offset_left = 7.0
+offset_top = 104.0
+offset_right = 327.0
+offset_bottom = 360.0
+texture = ExtResource("2_7umui")
+
+[node name="TreeNoFog3" type="ParallaxLayer" parent="."]
+position = Vector2(-166, 0)
+motion_scale = Vector2(0.07, 0)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Texture" type="TextureRect" parent="TreeNoFog3"]
+offset_top = 104.0
+offset_right = 320.0
+offset_bottom = 360.0
+texture = ExtResource("2_7umui")

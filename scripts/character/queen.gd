@@ -63,6 +63,11 @@ func attack_handler() -> void:
 		set_physics_process(false)
 		
 		
+func kill() -> void:
+	texture.action("dead")
+	set_physics_process(false)
+	
+	
 func apply_gravity(delta: float) -> void:
 	velocity.y += delta * gravity_speed
 	velocity.y = clamp(

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7j25qkhm2wrv"]
+[gd_scene load_steps=6 format=3 uid="uid://c7j25qkhm2wrv"]
 
-[ext_resource type="PackedScene" uid="uid://bsss4n81i3btn" path="res://scenes/character/queen.tscn" id="1_5w8qw"]
+[ext_resource type="PackedScene" uid="uid://cpskafkkjvlor" path="res://scenes/character/queen.tscn" id="1_5w8qw"]
 [ext_resource type="TileSet" uid="uid://70n07b2g1vns" path="res://resources/base_terrain.tres" id="2_3kpgg"]
 [ext_resource type="PackedScene" uid="uid://hhgmbr42k83y" path="res://scenes/environment/background.tscn" id="3_52g3t"]
+[ext_resource type="PackedScene" uid="uid://canr3uo6ig7yt" path="res://scenes/objects/tree/type_1.tscn" id="4_h73sj"]
+[ext_resource type="PackedScene" uid="uid://c1allf611wce4" path="res://scenes/enemy/boar.tscn" id="5_r2vnc"]
 
 [node name="Level" type="Node2D"]
 
@@ -10,10 +12,18 @@
 
 [node name="BaseTerrain" type="TileMap" parent="Terrain"]
 tile_set = ExtResource("2_3kpgg")
+collision_visibility_mode = 1
 format = 2
 layer_0/tile_data = PackedInt32Array(458759, 131073, 2, 393223, 131073, 1, 327687, 131073, 0, 458758, 65537, 2, 393222, 65537, 1, 458757, 65537, 2, 393221, 65537, 1, 458756, 65537, 2, 393220, 65537, 1, 327684, 65537, 0, 458755, 65537, 2, 393219, 65537, 1, 458754, 65537, 2, 393218, 65537, 1, 327682, 65537, 0, 458753, 1, 2, 393217, 1, 1, 327681, 1, 0, 327683, 65537, 0, 327685, 65537, 0, 327686, 65537, 0, 720914, 131073, 2, 655378, 131073, 1, 589842, 131073, 0, 655377, 65537, 1, 589841, 65537, 0, 655376, 65537, 1, 589840, 65537, 0, 655375, 65537, 1, 589839, 65537, 0, 655374, 65537, 1, 589838, 65537, 0, 655373, 65537, 1, 589837, 65537, 0, 655372, 65537, 1, 589836, 65537, 0, 720907, 65537, 2, 655371, 65537, 1, 589835, 65537, 0, 720913, 65537, 2, 720912, 65537, 2, 720908, 65537, 2, 720909, 65537, 2, 720910, 65537, 2, 720911, 65537, 2, 720906, 1, 2, 655370, 1, 1, 589834, 1, 0)
 
 [node name="Queen" parent="." instance=ExtResource("1_5w8qw")]
-position = Vector2(171, 132)
+position = Vector2(171, 157)
 
 [node name="Background" parent="." instance=ExtResource("3_52g3t")]
+
+[node name="TreeTemplate" parent="." instance=ExtResource("4_h73sj")]
+z_index = -1
+position = Vector2(468, 146)
+
+[node name="Boar" parent="." instance=ExtResource("5_r2vnc")]
+position = Vector2(90, 165)

@@ -4,8 +4,12 @@ class_name CharacterTexture
 var on_jump: bool = false
 var on_action: bool = false
 
+var first_attack_position: Vector2 = Vector2(12.5, -14)
+var second_attack_position: Vector2 = Vector2(-1.5, 3.5)
+
 @export var animation: AnimationPlayer = null
 @export var character: CharacterBody2D = null
+@export var attak_area_collision: CollisionShape2D = null
 
 func animate(velocity: Vector2) -> void:
 	set_direction(velocity.x)
@@ -28,13 +32,24 @@ func animate(velocity: Vector2) -> void:
 func set_direction(direction: float) -> void:
 	if direction > 0:
 		flip_h = false
+		first_attack_position.x = abs(first_attack_position.x)
+		second_attack_position.x = abs(second_attack_position.x)
 		
 	if direction < 0:
 		flip_h = true
+		first_attack_position.x = -abs(first_attack_position.x)
+		second_attack_position.x = -abs(second_attack_position.x)
 		
 		
 func action(anim: String) -> void:
 	on_action = true
+	
+	if anim == "attack_1":
+		attak_area_collision.position = first_attack_position
+		
+	if anim == "attack_2":
+		attak_area_collision.position = second_attack_position
+		
 	animation.play(anim)
 	
 	
@@ -67,6 +82,9 @@ func change_offset(anim_name: String) -> void:
 			
 		"jump_end":
 			new_offset = Vector2(4, -8)
+			
+		"dead":
+			new_offset = Vector2(10, 8)
 			
 	if flip_h:
 		new_offset.x *= -1

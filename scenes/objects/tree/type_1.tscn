@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://canr3uo6ig7yt"]
+
+[ext_resource type="PackedScene" uid="uid://rl3xdmwicgab" path="res://scenes/objects/tree/tree_template.tscn" id="1_b5l0b"]
+[ext_resource type="Texture2D" uid="uid://6d5d8dclkv4i" path="res://assets/objects/big_tree.png" id="2_wfacp"]
+
+[node name="TreeTemplate" instance=ExtResource("1_b5l0b")]
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_wfacp")
